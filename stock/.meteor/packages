@@ -22,5 +22,8 @@ iron:router				#router
 fourseven:scss          #dependencias para material-design
 materialize:materialize
 accounts-ui
-
+accounts-password
+aldeed:collection2@3.0.0
+aldeed:autoform
+percolate:momentum
 
