@@ -48,3 +48,9 @@ Projects.attachSchema(new SimpleSchema({
   	},
   	'notes.$': Notes
 }));
+
+Projects.allow({
+	insert: function(userId, doc){
+		return doc.owner === userId;
+	}
+})
