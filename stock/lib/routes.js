@@ -37,3 +37,7 @@ Router.route('/projects',{
 	}
 })
 
+Router.route('/project_form', {
+	name: 'project_form'
+})
+
