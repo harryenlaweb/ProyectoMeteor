@@ -1,4 +1,6 @@
 import { Router } from 'meteor/iron:router';
+import { Meteor } from 'meteor/meteor';
+import { Projects, ProjectsIndex } from '../lib/collections/projects';
 
 
 Router.onBeforeAction(function () {  
@@ -15,10 +17,23 @@ Router.onBeforeAction(function () {
 });
 
 Router.configure({
-	layoutTemplate: 'baseLayout'
-	
+	layoutTemplate: 'baseLayout',
+	waitOn:function() { 
+		return Meteor.subscribe('projects'); 
+	}	
 });
 
 Router.route('/', {
   name: 'home'
 });
+
+//-------------------------------SECCION PROYECTOS----------------------------------
+Router.route('/projects',{
+	name: 'projects',
+	data: {
+		projects(){
+			return Projects.find();
+		}
+	}
+})
+
