@@ -41,3 +41,19 @@ Router.route('/project_form', {
 	name: 'project_form'
 })
 
+Router.route('/project/:_id', function(){
+	let project = Projects.findOne({_id: this.params._id});
+	if (!project){
+		Router.go('projects');
+	}
+	else{
+		this.render('project_detail',{
+			data: {
+				project: project
+			}
+		})
+	}
+}, {
+	name: 'project_detail'
+})
+
