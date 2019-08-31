@@ -1,6 +1,9 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema'; //ESTA LIBRERIA CAMBIO, es diferente a la del video
 import { Notes } from './notes';
+import { check } from 'meteor/check';
+import { Meteor } from 'meteor/meteor';
+
 
 export const Projects = new Mongo.Collection('projects');
 
@@ -52,5 +55,12 @@ Projects.attachSchema(new SimpleSchema({
 Projects.allow({
 	insert: function(userId, doc){
 		return doc.owner === userId;
+	}
+})
+
+Meteor.methods({
+	'projects.remove'(projectId){
+		check(projectId, String);
+		Projects.remove(projectId);
 	}
 })
