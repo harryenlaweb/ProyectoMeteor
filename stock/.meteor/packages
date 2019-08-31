@@ -26,4 +26,4 @@ accounts-password@1.5.0			# auth-password
 aldeed:collection2-core@2.0.0	# simpleschema
 aldeed:autoform					# generador de formularios
 percolate:momentum				# animaciones
-matb33:bootstrap-glyphicons
+#matb33:bootstrap-glyphicons
