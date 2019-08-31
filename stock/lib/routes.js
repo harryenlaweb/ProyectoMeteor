@@ -57,3 +57,18 @@ Router.route('/project/:_id', function(){
 	name: 'project_detail'
 })
 
+//-------------------------------SECCION PROFILE----------------------------------
+Router.route('/profile', {
+	name: 'profile',
+	data: {
+		user() {
+			if(Meteor.user()){
+				return {
+				id: Meteor.user()._id,
+				email: Meteor.user().emails[0].address
+				}
+			}
+			
+		}
+	}
+})
