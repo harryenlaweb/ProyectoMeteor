@@ -27,3 +27,4 @@ aldeed:collection2-core@2.0.0			# simpleschema
 aldeed:autoform							# generador de formularios
 percolate:momentum						# animaciones
 chriswessels:glyphicons-halflings		# es la version compatible de glyphicons
+easy:search								# buscador para meteor

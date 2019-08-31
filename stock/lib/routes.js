@@ -32,7 +32,7 @@ Router.route('/projects',{
 	name: 'projects',
 	data: {
 		projects(){
-			return Projects.find();
+			return ProjectsIndex;
 		}
 	}
 })

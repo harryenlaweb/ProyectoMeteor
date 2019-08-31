@@ -3,9 +3,20 @@ import SimpleSchema from 'simpl-schema'; //ESTA LIBRERIA CAMBIO, es diferente a 
 import { Notes } from './notes';
 import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
+import { EasySearch } from 'meteor/easy:search';
 
+// Required AutoForm setup
+SimpleSchema.extendOptions(['autoform']);
 
 export const Projects = new Mongo.Collection('projects');
+
+export const ProjectsIndex = new EasySearch.Index({
+	collection: Projects,
+	fields: ['name', 'summary'],
+	engine: new EasySearch.Minimongo(),
+	defaultSearchOptions: {limit: 2}
+})
+
 
 Projects.attachSchema(new SimpleSchema({
 	name: {
