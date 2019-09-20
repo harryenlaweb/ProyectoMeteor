@@ -1,8 +1,8 @@
 <template name="projects">
 	<div class="row">
-		<h2>Mis proyectos</h2>
+		<h2>Modificar stock</h2>
 		<a class="btn" href="{{ pathFor 'project_form'}}">
-			Añadir nuevo proyecto
+			Añadir nuevo proyeto
 		</a>
 		{{> EasySearch.Input index=projects}}
 		<ul class="collection with-header">	
@@ -16,7 +16,7 @@
 			{{/EasySearch.Each}}
 
 			{{#EasySearch.IfNoResults index=projects}}
-				<li class="collection-item">No hay resultados ...</li>
+				<li class="collection-item">No hay ningun producto ...</li>
 			{{/EasySearch.IfNoResults}}
 
 			{{#EasySearch.IfSearching index=projects}}

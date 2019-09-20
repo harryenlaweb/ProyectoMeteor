@@ -1,13 +1,13 @@
 <template name="baseLayout">
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo right">Projects Manager App</a>
+			<a href="#" class="brand-logo right">Nombre de Empresa</a>
 
 			<ul id="nav-mobile" class="left">
 				{{>loginButtons}}
 				{{#if currentUser}}
-					<li><a href="{{ pathFor 'profile'}}">Mi perfil</a></li>
-					<li><a href="{{ pathFor 'projects'}}">Proyectos</a></li>
+					<li><a href="{{ pathFor 'profile'}}">Modificacion stock</a></li>
+					<li><a href="{{ pathFor 'projects'}}">Alta stock</a></li>
 				{{/if}}				
 			</ul>						
 		</div>
