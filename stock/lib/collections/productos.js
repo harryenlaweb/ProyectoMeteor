@@ -14,7 +14,7 @@ export const ProductosIndex = new EasySearch.Index({
 	collection: Productos,
 	fields: ['name', 'summary'],
 	engine: new EasySearch.Minimongo(),
-	defaultSearchOptions: {limit: 2}
+	defaultSearchOptions: {limit: 10}
 })
 
 
