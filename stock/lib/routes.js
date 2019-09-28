@@ -28,53 +28,8 @@ Router.route('/', {
   name: 'home'
 });
 
+
 //-------------------------------SECCION PROYECTOS----------------------------------
-Router.route('/projects',{
-	name: 'projects',
-	data: {
-		projects(){
-			return ProjectsIndex;
-		}
-	}
-})
-
-Router.route('/project_form', {
-	name: 'project_form'
-})
-
-Router.route('/project/:_id', function(){
-	let project = Projects.findOne({_id: this.params._id});
-	if (!project){
-		Router.go('projects');
-	}
-	else{
-		this.render('project_detail',{
-			data: {
-				project: project
-			}
-		})
-	}
-}, {
-	name: 'project_detail'
-})
-
-//-------------------------------SECCION PROFILE----------------------------------
-Router.route('/profile', {
-	name: 'profile',
-	data: {
-		user() {
-			if(Meteor.user()){
-				return {
-				id: Meteor.user()._id,
-				email: Meteor.user().emails[0].address
-				}
-			}
-			
-		}
-	}
-})
-
-//-------------------------------SECCION PRODUCTOS----------------------------------
 Router.route('/productos',{
 	name: 'productos',
 	data: {
@@ -103,3 +58,22 @@ Router.route('/producto/:_id', function(){
 }, {
 	name: 'producto_detail'
 })
+
+
+//-------------------------------SECCION PROFILE----------------------------------
+Router.route('/profile', {
+	name: 'profile',
+	data: {
+		user() {
+			if(Meteor.user()){
+				return {
+				id: Meteor.user()._id,
+				email: Meteor.user().emails[0].address
+				}
+			}
+			
+		}
+	}
+})
+
+//-------------------------------SECCION PRODUCTOS----------------------------------

@@ -6,3 +6,4 @@ Template.productos.events({
 		Meteor.call('productos.remove',this._id);
 	}
 })
+
