@@ -10,7 +10,7 @@ Router.onBeforeAction(function () {
     Router.go('home');    
   } else {
     if(Router.current().route.getName() === 'home'){
-       Router.go('projects');       
+       Router.go('productos');       
     }        
   }
   this.next();
@@ -20,7 +20,7 @@ Router.onBeforeAction(function () {
 Router.configure({
 	layoutTemplate: 'baseLayout',
 	waitOn:function() { 
-		return Meteor.subscribe('projects'); 
+		return Meteor.subscribe('productos'); 
 	}	
 });
 
