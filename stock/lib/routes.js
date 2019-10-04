@@ -62,7 +62,7 @@ Router.route('/producto/:_id', function(){
 
 //-------------------------------SECCION PROFILE----------------------------------
 Router.route('/profile', {
-	name: 'profile',
+	name: 'stock',
 	data: {
 		user() {
 			if(Meteor.user()){
