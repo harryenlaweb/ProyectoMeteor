@@ -1,5 +1,4 @@
 s (58 sloc) 1.22 KB
-/* basic typeahead styles */
 
 .typeahead,
 .tt-query,
@@ -60,7 +59,7 @@ s (58 sloc) 1.22 KB
 .tt-suggestion:hover {
   cursor: pointer;
   color: #fff;
-  background-color: #0097cf;
+  background-color: #97cf;
 }
 
 .tt-suggestion.tt-cursor {

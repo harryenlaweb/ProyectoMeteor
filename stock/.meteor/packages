@@ -20,7 +20,7 @@ blaze-html-templates
 #DEPENDENCIAS DEL PROYECTO
 iron:router								# router
 fourseven:scss 							# dependencias para material-design
-materialize:materialize					# material-design
+materialize:materialize@=0.97.0					# material-design
 accounts-ui@1.2.0						# auth
 accounts-password@1.5.0					# auth-password
 aldeed:collection2-core@2.0.0			# simpleschema
