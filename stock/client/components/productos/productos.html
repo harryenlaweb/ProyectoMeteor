@@ -1,14 +1,41 @@
+
 <template name="productos">
+
 	
 		{{> EasySearch.Input index=productos}}
-		<ul class="collection with-header">	
-			{{#EasySearch.Each index=productos}}		
-			<li class="collection-item">
+		<table><thead>
+			<tr>
+				<th> Objeto </th>
+				<th> Detalle </th>
+				<th> Cantidad </th>
+			</tr>
+
+			</thead>
+		<ul class="collection with-header" >	
+			{{#EasySearch.Each index=productos}}
+			
+	<li class="collection-item" >
+
 				<div>
-					{{name}}
-					{{>producto_links}}
+			<tbody>
+			<tr>
+				<td>{{name}}</td> 
+
+				
+			<td>{{detalle}} </td>
+					
+
+			<td>{{cantidad}} </td>
+				
+					
+</tr></tbody>
+ {{>producto_links}}
 				</div>
-			</li>			
+
+				
+			</li>
+		
+
 			{{/EasySearch.Each}}
 
 			{{#EasySearch.IfNoResults index=productos}}
@@ -19,6 +46,6 @@
 				<li class="collection-item">Buscando ...</li>
 			{{/EasySearch.IfSearching}}
 		</ul>
-		{{>EasySearch.Pagination index=productos}}
+		{{>EasySearch.Pagination index=productos}}</table>
 	
 </template>

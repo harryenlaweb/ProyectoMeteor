@@ -21,7 +21,7 @@ export const ProductosIndex = new EasySearch.Index({
 Productos.attachSchema(new SimpleSchema({
 	name: {
 		type: String,
-		label: 'Nombre del proyecto',
+		label: 'Nombre del producto',
 		max: 200
 	},
 	owner:{
@@ -43,7 +43,7 @@ Productos.attachSchema(new SimpleSchema({
 			type: "hidden"
 		}
 	},
-	summary:{ 
+	detalle:{ 
 		type: String, 
 		label: 'Detalle del Producto', 
 		optional: true, 
@@ -56,8 +56,8 @@ Productos.attachSchema(new SimpleSchema({
 		}
 	}﻿,
 	
-	items: {        
-    type: Array,		//EL ARRAY TAMBIEN SE DEFINE DIFERENTE AL VIDEO
+	cantidad: {        
+    type: String,		//EL ARRAY TAMBIEN SE DEFINE DIFERENTE AL VIDEO
     optional: true,    
   	},
   	'items.$': Items
