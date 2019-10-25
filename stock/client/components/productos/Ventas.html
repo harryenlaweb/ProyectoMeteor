@@ -1,0 +1,33 @@
+<template name="Ventas">
+{{> EasySearch.Input index=Ventas atributes=searchAttributes}}
+		<table><thead>
+			<tr>
+				<th> Objeto </th>
+				<th> Detalle </th>
+				<th> Cantidad </th>
+				
+			</tr>
+
+			</thead>
+		<tbody>	
+				{{#EasySearch.Each index=productos}}
+	 <tr>
+
+				
+				<td>{{name}}</td> 
+
+				
+			<td>{{detalle}} </td>
+					
+
+			<td>{{cantidad}} </td>
+			<td >	 </td>
+				</tr>
+				
+							{{/EasySearch.Each}}
+
+
+		</tbody>
+	</table>
+			
+</template>

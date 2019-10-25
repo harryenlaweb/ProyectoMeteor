@@ -2,7 +2,7 @@ import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
 import { Projects, ProjectsIndex } from '../lib/collections/projects';
 import { Productos, ProductosIndex } from '../lib/collections/productos';
-
+import {Ventas, VentasIndex} from'../lib/collections/Ventas';
 
 Router.onBeforeAction(function () {  
 
@@ -77,3 +77,31 @@ Router.route('/profile', {
 })
 
 //-------------------------------SECCION PRODUCTOS----------------------------------
+Router.route('/Ventas',{
+	name: 'Ventas',
+	data: {
+		ventas(){
+			return ProductosIndex;
+		}
+	}
+})
+
+Router.route('/Vetas_form', {
+	name: 'Ventas_form'
+})
+
+Router.route('/Ventas/:_id', function(){
+	let ventas = Ventas.findOne({_id: this.params._id});
+	if (!ventas){
+		Router.go('ventas');
+	}
+	else{
+		this.render('Ventas_detail',{
+			data: {
+				ventas: ventas
+			}
+		})
+	}
+}, {
+	name: 'Ventas_detail'
+})

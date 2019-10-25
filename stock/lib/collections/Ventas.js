@@ -5,29 +5,24 @@ import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 import { EasySearch } from 'meteor/easy:search';
 
-// Required AutoForm setup
 SimpleSchema.extendOptions(['autoform']);
 
-export const Productos = new Mongo.Collection('productos');
+export const Ventas = new Mongo.Collection('Ventas');
 
-export const ProductosIndex = new EasySearch.Index({
-	collection: Productos,
+export const VentasIndex = new EasySearch.Index({
+	collection: Ventas,
 	fields: ['name', 'summary'],
 	engine: new EasySearch.Minimongo(),
 	defaultSearchOptions: {limit: 10}
 })
 
 
-Productos.attachSchema(new SimpleSchema({
+Ventas.attachSchema(new SimpleSchema({
 	name: {
 		type: String,
 		label: 'Nombre del producto',
 		max: 200
 	},
-	id: {
-		type: String,
-		label: 'id',
-		autoValue() {}	},
 	owner:{
 		type: String,
 		label: "Propietario",
@@ -67,15 +62,9 @@ Productos.attachSchema(new SimpleSchema({
   	'items.$': Items
 }));
 
-Productos.allow({
+Ventas.allow({
 	insert: function(userId, doc){
 		return doc.owner === userId;
 	}
 })
 
-Meteor.methods({
-	'productos.remove'(productoId){
-		check(productoId, String);
-		Productos.remove(productoId);
-	}
-})

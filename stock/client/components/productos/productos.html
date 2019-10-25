@@ -2,50 +2,79 @@
 <template name="productos">
 
 	
-		{{> EasySearch.Input index=productos}}
+		{{> EasySearch.Input index=productos atributes=searchAttributes}}
 		<table><thead>
 			<tr>
 				<th> Objeto </th>
 				<th> Detalle </th>
 				<th> Cantidad </th>
+				
 			</tr>
 
 			</thead>
-		<ul class="collection with-header" >	
+		<tbody>	
 			{{#EasySearch.Each index=productos}}
-			
-	<li class="collection-item" >
+				
+	 <tr>
 
-				<div>
-			<tbody>
-			<tr>
+				
 				<td>{{name}}</td> 
 
 				
 			<td>{{detalle}} </td>
 					
 
-			<td>{{cantidad}} </td>
-				
-					
-</tr></tbody>
- {{>producto_links}}
-				</div>
+						<td id=1>
+							<form name="ventas" id=1++>
+<input type="button"  onClick="incrementar()" value="aumentar">
+<input type="button"  onClick="decrementar()" value="disminuir">
+<label>
+<input name="cantidad" type="text" value={{id}}>
+</label>
+</form> 
 
+ </td>
+
+<script language="JavaScript">
+	var c={{cantidad}};	
+
+	
+	
+var contador= c;
+function incrementar() {
+if (contador==500)
+alert('Maximo permitido alcanzado: 500');
+else 
+document.ventas.cantidad.value= c++;
+
+}
+function decrementar() {
+if(contador==0)
+alert('Minimo permitido alcanzado: 0');
+else {
+document.ventas.cantidad.value= c--;
+}
+}
+</script>
+
+			<td >	{{>producto_links}} </td>
+
+			
+				</tr>
 				
-			</li>
-		
+				
 
 			{{/EasySearch.Each}}
-
+		</tbody>
+	</table>
 			{{#EasySearch.IfNoResults index=productos}}
-				<li class="collection-item">No hay ningun producto ...</li>
+				<p> No hay ningun producto ...</p>
 			{{/EasySearch.IfNoResults}}
 
 			{{#EasySearch.IfSearching index=productos}}
-				<li class="collection-item">Buscando ...</li>
+				<p>Buscando ...</p>
 			{{/EasySearch.IfSearching}}
-		</ul>
-		{{>EasySearch.Pagination index=productos}}</table>
+		
+		{{>EasySearch.Pagination index=productos}}
 	
 </template>
