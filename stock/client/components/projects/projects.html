@@ -1,5 +1,6 @@
 <template name="projects">
 	<div class="row">
+<<<<<<< HEAD
 		<h2>Alta stock</h2>
 		<a class="btn" href="{{ pathFor 'project_form'}}">
 			Añadir nuevo 
@@ -24,5 +25,29 @@
 			{{/EasySearch.IfSearching}}
 		</ul>
 		{{>EasySearch.Pagination index=projects}}
+=======
+		<div class="col s12">
+			<h2>Modificacion stock</h2>
+			<a class="btn" href="{{ pathFor 'project_form'}}">
+				Añadir nuevo proyecto
+			</a>
+						
+			<ul class="collection with-header">	
+				{{#if projects.count}}
+					{{#each projects}}
+						<li class="collection-item">
+							<div>
+								{{name}}
+								{{>project_links}}
+							</div>
+						</li>
+					{{/each}}
+				{{else}}
+					<li>No tienes ningun producto</li>
+				{{/if}}
+				
+			</ul>
+		</div>		
+>>>>>>> master
 	</div>
 </template>

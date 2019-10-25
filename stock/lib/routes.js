@@ -28,6 +28,7 @@ Router.route('/', {
   name: 'home'
 });
 
+<<<<<<< HEAD
 
 //-------------------------------SECCION PROYECTOS----------------------------------
 Router.route('/productos',{
@@ -79,6 +80,11 @@ Router.route('/profile', {
 //-------------------------------SECCION PRODUCTOS----------------------------------
 Router.route('/Ventas',{
 	name: 'Ventas',
+=======
+//-------------------------------Seleccione articulo ----------------------------------
+Router.route('/projects',{
+	name: 'projects',
+>>>>>>> master
 	data: {
 		ventas(){
 			return ProductosIndex;
