@@ -27,7 +27,7 @@ Router.route('/', {
   name: 'home'
 });
 
-//-------------------------------SECCION PROYECTOS----------------------------------
+//-------------------------------Seleccione articulo ----------------------------------
 Router.route('/projects',{
 	name: 'projects',
 	data: {
