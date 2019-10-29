@@ -79,3 +79,17 @@ Meteor.methods({
 		Productos.remove(productoId);
 	}
 })
+Meteor.methods({
+  'productos.update'( ProductoId) {
+  	check(productoId, String);
+		
+   
+
+   
+
+    Productos.update(ProductoId, {
+      $set: { cantidad:17 }
+    });
+  }
+});
+   

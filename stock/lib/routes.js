@@ -28,7 +28,6 @@ Router.route('/', {
   name: 'home'
 });
 
-<<<<<<< HEAD
 
 //-------------------------------SECCION PROYECTOS----------------------------------
 Router.route('/productos',{
@@ -78,36 +77,4 @@ Router.route('/profile', {
 })
 
 //-------------------------------SECCION PRODUCTOS----------------------------------
-Router.route('/Ventas',{
-	name: 'Ventas',
-=======
-//-------------------------------Seleccione articulo ----------------------------------
-Router.route('/projects',{
-	name: 'projects',
->>>>>>> master
-	data: {
-		ventas(){
-			return ProductosIndex;
-		}
-	}
-})
 
-Router.route('/Vetas_form', {
-	name: 'Ventas_form'
-})
-
-Router.route('/Ventas/:_id', function(){
-	let ventas = Ventas.findOne({_id: this.params._id});
-	if (!ventas){
-		Router.go('ventas');
-	}
-	else{
-		this.render('Ventas_detail',{
-			data: {
-				ventas: ventas
-			}
-		})
-	}
-}, {
-	name: 'Ventas_detail'
-})

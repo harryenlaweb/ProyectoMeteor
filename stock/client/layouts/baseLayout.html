@@ -1,19 +1,14 @@
 <template name="baseLayout">
 	<nav>
-<<<<<<< HEAD
-		<div class="nav-wrapper cyan accent-4"
->
-=======
-		<div class="nav-wrapper">
-			<a href="#" class="brand-logo right">Nombre de Empresa</a>
->>>>>>> master
+		
+
+		<div class="nav-wrapper cyan accent-4">
 
 			<a href="#" class="brand-logo right black-text text-darken-2">Nombre de Empresa</a>
 
 			<ul id="nav-mobile" class="left black-text text-darken-2">
 				{{>loginButtons}}
 				{{#if currentUser}}
-<<<<<<< HEAD
 
 					
 					<li><a href="{{ pathFor 'producto_form'}}" class="black-text text-darken-2">Alta stock</a></li>
@@ -24,13 +19,11 @@
 
 					
 
-=======
-					<li><a href="{{ pathFor 'profile'}}">Modificacion stock</a></li>
-					<li><a href="{{ pathFor 'projects'}}">Alta stock</a></li>
->>>>>>> master
+
 				{{/if}}				
 			</ul>						
 		</div>
+
 	</nav>
 	
 
