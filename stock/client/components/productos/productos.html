@@ -1,7 +1,6 @@
 
 <template name="productos">
 
-	
 		{{> EasySearch.Input index=productos atributes=searchAttributes}}
 		<table><thead>
 			<tr>
@@ -24,37 +23,15 @@
 			<td>{{detalle}} </td>
 					
 
-<td>							<form name="ventas" >
-<input type="button"  onClick="incrementar()" value="aumentar">
-<input type="button"  onClick="decrementar()" value="disminuir">
-<label>
-<input name="cantidad" type="text" value={{cantidad}}>
-</label>
-</form> 
+<td>	
+<button id="1">Aumentar</button>
+<button id="2">Disminuir</button>
+<p> este es el dato a mostrar {{counter}} </p>
+
+
 
  </td>
 
-<script language="JavaScript">
-	var c={{cantidad}};	
-
-	
-	
-var contador= c;
-function incrementar() {
-if (contador==500)
-alert('Maximo permitido alcanzado: 500');
-else 
-document.ventas.cantidad.value= c++;
-
-}
-function decrementar() {
-if(contador==0)
-alert('Minimo permitido alcanzado: 0');
-else {
-document.ventas.cantidad.value= c--;
-}
-}
-</script>
 
 			<td >	{{>producto_links}} </td>
 
