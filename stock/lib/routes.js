@@ -2,7 +2,6 @@ import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
 import { Projects, ProjectsIndex } from '../lib/collections/projects';
 import { Productos, ProductosIndex } from '../lib/collections/productos';
-import {Ventas, VentasIndex} from'../lib/collections/Ventas';
 
 Router.onBeforeAction(function () {  
 
@@ -58,6 +57,11 @@ Router.route('/producto/:_id', function(){
 }, {
 	name: 'producto_detail'
 })
+
+Router.route('Ventas', {
+	name: 'Ventas'
+})
+
 
 
 //-------------------------------SECCION PROFILE----------------------------------

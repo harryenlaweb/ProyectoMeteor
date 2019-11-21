@@ -24,10 +24,6 @@ Productos.attachSchema(new SimpleSchema({
 		label: 'Nombre del producto',
 		max: 200
 	},
-	id: {
-		type: String,
-		label: 'id',
-		autoValue() {}	},
 	owner:{
 		type: String,
 		label: "Propietario",
@@ -61,14 +57,16 @@ Productos.attachSchema(new SimpleSchema({
 	}﻿,
 	
 	cantidad: {        
-    type: String,		//EL ARRAY TAMBIEN SE DEFINE DIFERENTE AL VIDEO
+    type: Number,		//EL ARRAY TAMBIEN SE DEFINE DIFERENTE AL VIDEO
     optional: true,    
   	},
-  	'items.$': Items
 }));
 
 Productos.allow({
 	insert: function(userId, doc){
+		return doc.owner === userId;
+	},
+	update: function(userId,doc){
 		return doc.owner === userId;
 	}
 })

@@ -1,34 +1,46 @@
-<template name="Ventas">
-	{{> productos}};
-{{> EasySearch.Input index=Ventas atributes=searchAttributes}}
-		<table><thead>
-			<tr>
-				<th> Objeto </th>
-				<th> Detalle </th>
-				<th> Cantidad </th>
-				
-			</tr>
+<template name="ventas">
+	<body>
+		<ul id="lista">
+	<script>
+function añadirProducto(){
+            productos = new Array();
+            elementos = parseInt(prompt("¿ Cuantos productos quieres añadir ?"));
+            for (let i = 0; i < elementos; i++) {
+               producto = prompt("Introduce el nombre de producto: ");
+                detalle = prompt("Introduce el detalle de producto: ");
+                cantidad = prompt("Introduce la cantidad: ");
+                prov = prompt("Introduce el proveedor: ");
+                
 
-			</thead>
-		<tbody>	
-				{{#EasySearch.Each index=productos}}
-	 <tr>
-
-				
-				<td>{{name}}</td> 
-
-				
-			<td>{{detalle}} </td>
-					
-
-			<td>{{cantidad}} </td>
-			<td >	 </td>
-				</tr>
-				
-							{{/EasySearch.Each}}
+                productos.push(new Array(producto, detalle, cantidad, prov));
+            }
+            return productos;
+        }
 
 
-		</tbody>
-	</table>
-			
+function getCells(data, type) {
+  return data.map(cell => `<${type}>${cell}</${type}>`).join('');
+}
+
+function createBody(data) {
+  return data.map(row => `<tr>${getCells(row, 'td')}</tr>`).join('');
+}
+
+function createTable(data) {
+  let cabeceras = [ 'Nombre', 'Detalle', 'Cantidad' , 'Proveedor'];
+  return `
+    <table>
+      <thead>${getCells(cabeceras, 'th')}</thead>
+      <tbody>${createBody(data)}</tbody>
+    </table>
+  `;
+}
+    var lista = document.getElementById("lista");
+    lista.insertAdjacentHTML("beforeend",createTable(añadirProducto()));
+
+</script>
+</ul>
+	<input type="button" margin="500px" value="imprimir" onClick="window.print()">
+
+</body>
 </template>

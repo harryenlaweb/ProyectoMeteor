@@ -4,11 +4,10 @@ import { Productos } from '../../../lib/collections/productos';
 import './productos.html';
 
 
-var cantidad = Productos.find({cantidad})
 
 Template.productos.onCreated(function productosOnCreated() {
 
-	this.counter = new ReactiveVar(cantidad)
+	this.counter = new ReactiveVar(0);
 });
 
 Template.productos.helpers({
@@ -16,8 +15,10 @@ Template.productos.helpers({
 		return Template.instance().counter.get();
 	},
 
+	formCollection(){
+		return Productos;
+	},
 });
-
 
 Template.productos.events({
 	'click .remove': function(event, template){
@@ -26,11 +27,16 @@ Template.productos.events({
 
 	},
 	'click #1 '(event,instance) {
-		instance.counter.set(instance.counter.get()+1); 
+		var prod = Productos.findOne({"_id":this._id});
+		var cant = prod.cantidad;
+		cant = cant+1;
+		Productos.update({"_id":this._id},{$set:{cantidad:cant}}) 
 	},
 	'click #2 '(event,instance) {
-		instance.counter.set(instance.counter.get()-1); 
-	},
+		var prod = Productos.findOne({"_id":this._id});
+		var cant = prod.cantidad;
+		cant = cant-1;
+		Productos.update({"_id":this._id},{$set:{cantidad:cant}})},
 });
 
 
