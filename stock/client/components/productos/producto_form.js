@@ -5,7 +5,6 @@ import SimpleSchema from 'simpl-schema';
 SimpleSchema.extendOptions(['autoform']);
 
 
-
 Template.productoForm.helpers({
 	formCollection() {
 		return Productos;

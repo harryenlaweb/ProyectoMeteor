@@ -4,28 +4,28 @@
 		<a class="btn" href="{{ pathFor 'project_form'}}">
 			Añadir nuevo 
 		</a>
-		{{> EasySearch.Input index=projects}}
-		<ul class="collection with-header">	
-			{{#EasySearch.Each index=projects}}		
-			<li class="collection-item">
-				<div>
-					{{name}}
-					{{>project_links}}
-				</div>
-			</li>			
-			{{/EasySearch.Each}}
+							{{> EasySearch.Input index=projects}}
+			<ul class="collection with-header">	
+			{				{#EasySearch.Each index=projects}}		
+				<li class="collection-item">
+								<div>
+									{{name}}
+									{{>project_links}}
+								</div>
+				</li>			
+							{{/EasySearch.Each}}
 
-			{{#EasySearch.IfNoResults index=projects}}
+							{{#EasySearch.IfNoResults index=projects}}
 				<li class="collection-item">No hay ningun producto ...</li>
-			{{/EasySearch.IfNoResults}}
+							{{/EasySearch.IfNoResults}}
 
-			{{#EasySearch.IfSearching index=projects}}
+							{{#EasySearch.IfSearching index=projects}}
 				<li class="collection-item">Buscando ...</li>
-			{{/EasySearch.IfSearching}}
-		</ul>
-		{{>EasySearch.Pagination index=projects}}
-		<div class="col s12">
-			<h2>Modificacion stock</h2>
+							{{/EasySearch.IfSearching}}
+			</ul>
+							{{>EasySearch.Pagination index=projects}}
+	<div class="col s12">
+						<h2>Modificacion stock</h2>
 			<a class="btn" href="{{ pathFor 'project_form'}}">
 				Añadir nuevo proyecto
 			</a>
