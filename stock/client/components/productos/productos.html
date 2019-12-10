@@ -5,7 +5,7 @@
       <thead>
 			
          <tr>
-				    <th> Objeto </th>
+				    <th>  Objeto   </th>
 				   <th> Detalle </th>
 				    <th> Cantidad </th>
 			   </tr>
@@ -14,11 +14,14 @@
 	         <tbody>	
 			       {{#EasySearch.Each index=productos}}
 				        <tr>
-                <td>{{name}}</td> 
-               <td>{{detalle}} </td>
+                <td> <input id="nombre1" type="text" name="nombre" value=""> {{name}}  </td> 
+          
+                              <td>{{detalle}} </td>
 		              <td>	
                         <button id="1">+</button>
                         <button id="2">-</button>
+                        <button id="3">Modificar</button>
+
                            <p> {{cantidad}}</p>
                   </td>
                    <td >	{{>producto_links}} </td>
