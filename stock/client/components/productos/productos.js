@@ -8,6 +8,7 @@ import './productos.html';
 Template.productos.onCreated(function productosOnCreated() {
 
 	this.counter = new ReactiveVar(0);
+	console.log(this);
 });
 
 Template.productos.helpers({
@@ -39,9 +40,10 @@ Template.productos.events({
 		Productos.update({"_id":this._id},{$set:{cantidad:cant}})
 	},
 	'click #3 '(event,instance) {
-		var prod = Productos.findOne({"_id":this._id});
-		var name = prod.name;
-		var nombre= $('#nombre1').val();
+ 		
+ 		var prod = Productos.findOne({"_id":this._id});
+		var nombre = prod.name;
+		nombre = $('#nombre1').val();	
 		Productos.update({"_id":this._id},{$set:{name:nombre}})},
 
 });
