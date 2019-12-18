@@ -71,12 +71,9 @@ Template.productos.events({
 		let id_act = this._id;
     let nombre=$("input#"+this._id ).val(); //tomo el valor del input nombre
 		let detalle=$("input#"+this._id+"detalle").val(); //tomo el valor del input detalle
-<<<<<<< HEAD
-=======
     console.log("Valor nombre",nombre);
 		console.log("Valor detalle",detalle);
     console.log("id nombre",id_act);
->>>>>>> master
 		Productos.update({"_id":this._id},{$set:{name:nombre,detalle:detalle}}) //actualizo detalle y nombre
   }
 
