@@ -1,5 +1,9 @@
 <template name="productos">
+<<<<<<< HEAD
 {{> EasySearch.Input index=productos atributes=searchAttributes}}  
+=======
+
+>>>>>>> master
 		<table>
       <thead>
 
@@ -11,7 +15,12 @@
 
       </thead>
 	         <tbody>
+<<<<<<< HEAD
          {{#EasySearch.Each index=productos}}				        <tr>
+=======
+			       {{#each productos3}}
+				        <tr>
+>>>>>>> master
               <td> <input id={{_id}} type="text" name="nombre" value={{name}}>   </td>
               <td> <input id={{_id}}detalle type="text" name="detalle" value={{detalle}}> </td>
 		              <td>
@@ -25,6 +34,7 @@
                    <td >	{{>producto_links}} </td>
           </tr>
 
+<<<<<<< HEAD
           {{/EasySearch.Each}}
              </tbody>
 
@@ -40,4 +50,11 @@
  
 {{>EasySearch.Pagination index=productos}}
 	
+=======
+              {{/each}}
+
+             </tbody>
+
+      </table>
+>>>>>>> master
 </template>
