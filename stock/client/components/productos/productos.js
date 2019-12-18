@@ -3,9 +3,6 @@ import {ReactiveVar} from 'meteor/reactive-var';
 import { Productos } from '../../../lib/collections/productos';
 import './productos.html';
 
-
-
-
 Template.productos.helpers({
 	productos3: function(){
     var productos3 = Productos.find({}).fetch();
@@ -48,9 +45,6 @@ Template.productos.helpers({
     return html;
   }
 });*/
-
-
-
 Template.productos.events({
 	'click .remove': function(event, template){
 		//console.log(this._id); //con esto muestro el id por consola que voy a eliminar
@@ -75,11 +69,14 @@ Template.productos.events({
  		console.log("evento de clase")
  		var prod = Productos.findOne({"_id":this._id});
 		let id_act = this._id;
-    let nombre=$("input#"+this._id ).val();
-    console.log("Valor input",nombre);
+    let nombre=$("input#"+this._id ).val(); //tomo el valor del input nombre
+		let detalle=$("input#"+this._id+"detalle").val(); //tomo el valor del input detalle
+    console.log("Valor nombre",nombre);
+		console.log("Valor detalle",detalle);
     console.log("id nombre",id_act);
-		Productos.update({"_id":this._id},{$set:{name:nombre}})
-  },
+		Productos.update({"_id":this._id},{$set:{name:nombre,detalle:detalle}}) //actualizo detalle y nombre
+  }
+
 
 
 });
