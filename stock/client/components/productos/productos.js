@@ -5,21 +5,51 @@ import './productos.html';
 
 
 
-Template.productos.onCreated(function productosOnCreated() {
-
-	this.counter = new ReactiveVar(0);
-	console.log(this);
-});
 
 Template.productos.helpers({
-	counter(){
-		return Template.instance().counter.get();
-	},
-
-	formCollection(){
-		return Productos;
+	productos3: function(){
+    var productos3 = Productos.find({}).fetch();
+    console.log("productos",productos3);
+    productos3.sort(function(a, b) { //funcion que ordena los datos por apellido
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+		return productos3;
 	},
 });
+/*Template.productos.helpers({
+  myHtml: function() {
+    var productos3 = Productos.find({}).fetch();
+    console.log("productos",productos3);
+    productos3.sort(function(a, b) { //funcion que ordena los datos por apellido
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+    var html="<table><thead><tr><th>Objeto</th><th>Detalle</th><th>Cantidad</th></tr></thead><tbody>";
+    productos3.forEach(function(prod) {
+      console.log(prod.name);
+      html+="<tr><td><input id='"+prod._id+"'type='text'name='nombre'value='"+prod.name+"'>"+"</td><td>"+prod.detalle+"</td><td>";
+      html+="<button id='1'>+</button><button id='2'>-</button><button id='"+prod._id+"' class='button'>Modificar</button>";
+      html+="<p>"+prod.cantidad+"</p></td><td>{{>producto_links}}</td></tr>";
+    })
+    html+="</tbody></table>";
+    return html;
+  }
+});*/
+
+
 
 Template.productos.events({
 	'click .remove': function(event, template){
@@ -31,7 +61,7 @@ Template.productos.events({
 		var prod = Productos.findOne({"_id":this._id});
 		var cant = prod.cantidad;
 		cant = cant+1;
-		Productos.update({"_id":this._id},{$set:{cantidad:cant}}) 
+		Productos.update({"_id":this._id},{$set:{cantidad:cant}})
 	},
 	'click #2 '(event,instance) {
 		var prod = Productos.findOne({"_id":this._id});
@@ -39,14 +69,17 @@ Template.productos.events({
 		cant = cant-1;
 		Productos.update({"_id":this._id},{$set:{cantidad:cant}})
 	},
-	'click #3 '(event,instance) {
- 		
+	'click .button '(event,instance) {
+    event.preventDefault();
+    event.stopPropagation();
+ 		console.log("evento de clase")
  		var prod = Productos.findOne({"_id":this._id});
-		var nombre = prod.name;
-		nombre = $('#nombre1').val();	
-		Productos.update({"_id":this._id},{$set:{name:nombre}})},
+		let id_act = this._id;
+    let nombre=$("input#"+this._id ).val();
+    console.log("Valor input",nombre);
+    console.log("id nombre",id_act);
+		Productos.update({"_id":this._id},{$set:{name:nombre}})
+  },
+
 
 });
-
-
-
