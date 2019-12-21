@@ -1,0 +1,35 @@
+<template name="clientes">
+
+	 {{> EasySearch.Input index=clientes atributes=searchAttributes}}
+
+		<table>
+      <thead>
+
+         <tr>
+				    <th>  Objeto   </th>
+				   <th> Detalle </th>
+				    <th> Cantidad </th>
+			   </tr>
+
+      </thead>
+	         <tbody>
+			       {{#EasySearch.Each index=clientes}}
+          
+
+             {{/EasySearch.Each}}
+
+             </tbody>
+
+      </table>
+
+      {{#EasySearch.IfNoResults index=clientes}}
+        <p> No hay ningun producto ...</p>
+      {{/EasySearch.IfNoResults}}
+
+      {{#EasySearch.IfSearching index=clientes}}
+        <p>Buscando ...</p>
+      {{/EasySearch.IfSearching}}
+    
+      {{>EasySearch.Pagination index=clientes}}
+
+</template>

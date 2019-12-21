@@ -11,3 +11,8 @@ Meteor.publish('productos', function productosPublication()
 {
 	return Productos.find({owner: this.userId});
 });
+
+Meteor.publish('clientes', function clientesPublication()
+{
+	return Clientes.find({owner: this.userId});
+});

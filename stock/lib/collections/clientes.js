@@ -8,21 +8,20 @@ import { EasySearch } from 'meteor/easy:search';
 // Required AutoForm setup
 SimpleSchema.extendOptions(['autoform']);
 
-export const Productos = new Mongo.Collection('productos');
+export const Clientes = new Mongo.Collection('clientes');
 
 
-export const ProductosIndex = new EasySearch.Index({
-	collection: Productos,
+export const ClientesIndex = new EasySearch.Index({
+	collection: Clientes,
 	fields: ['name', 'summary'],
 	engine: new EasySearch.Minimongo(),
 	defaultSearchOptions: {limit: 10}
 })
 
-
-Productos.attachSchema(new SimpleSchema({
+Clientes.attachSchema(new SimpleSchema({
 	name: {
 		type: String,
-		label: 'Nombre del producto',
+		label: 'Nombre del cliente',
 		max: 200
 	},
 	owner:{
@@ -44,9 +43,9 @@ Productos.attachSchema(new SimpleSchema({
 			type: "hidden"
 		}
 	},
-	detalle:{ 
+	DNI:{ 
 		type: String, 
-		label: 'Detalle del Producto', 
+		label: 'DNI del cliente', 
 		optional: true, 
 		max: 2000,
 		autoform:{ 					//EL AUTOFORM SE DEFINE DIFERENTE AL VIDEO
@@ -63,32 +62,3 @@ Productos.attachSchema(new SimpleSchema({
   	},
 }));
 
-Productos.allow({
-	insert: function(userId, doc){
-		return doc.owner === userId;
-	},
-	update: function(userId,doc){
-		return doc.owner === userId;
-	}
-})
-
-Meteor.methods({
-	'productos.remove'(productoId){
-		check(productoId, String);
-		Productos.remove(productoId);
-	}
-})
-Meteor.methods({
-  'productos.update'( ProductoId) {
-  	check(productoId, String);
-		
-   
-
-   
-
-    Productos.update(ProductoId, {
-      $set: { cantidad:17 }
-    });
-  }
-});
-   

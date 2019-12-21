@@ -2,6 +2,8 @@ import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
 import { Projects, ProjectsIndex } from '../lib/collections/projects';
 import { Productos, ProductosIndex } from '../lib/collections/productos';
+import { Clientes, ClientesIndex } from '../lib/collections/clientes';
+
 
 Router.onBeforeAction(function () {  
 
@@ -19,7 +21,11 @@ Router.onBeforeAction(function () {
 Router.configure({
 	layoutTemplate: 'baseLayout',
 	waitOn:function() { 
-		return Meteor.subscribe('productos'); 
+		return [
+			function() {return Meteor.subscribe('productos');},
+			function() {return Meteor.subscribe('clientes');},
+		]
+		  
 	}	
 });
 
@@ -34,6 +40,15 @@ Router.route('/productos',{
 	data: {
 		productos(){
 			return ProductosIndex;
+		}
+	}
+})
+
+Router.route('/clientes',{
+	name: 'clientes',
+	data: {
+		clientes(){
+			return Clientes();
 		}
 	}
 })
