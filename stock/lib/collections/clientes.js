@@ -62,3 +62,11 @@ Clientes.attachSchema(new SimpleSchema({
   	},
 }));
 
+Clientes.allow({
+	insert: function(userId, doc){
+		return doc.owner === userId;
+	},
+	update: function(userId,doc){
+		return doc.owner === userId;
+	}
+})

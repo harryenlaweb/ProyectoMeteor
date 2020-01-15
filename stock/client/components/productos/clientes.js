@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import {ReactiveVar} from 'meteor/reactive-var';
-import { Clientes } from '../../../lib/collections/clientes';
-
+import { Productos } from '../../../lib/collections/productos';
 
 Template.clientes.helpers({
 	formCollection() {
-		return Clientes;
+		return Productos;
+		
 	}
 })

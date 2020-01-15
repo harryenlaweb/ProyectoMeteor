@@ -1,50 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import {ReactiveVar} from 'meteor/reactive-var';
 import { Productos } from '../../../lib/collections/productos';
-import './productos.html';
 
 Template.productos.helpers({
-	productos3: function(){
-    var productos3 = Productos.find({}).fetch();
-    console.log("productos",productos3);
-    productos3.sort(function(a, b) { //funcion que ordena los datos por apellido
-      if (a.name > b.name) {
-        return 1;
-      }
-      if (a.name < b.name) {
-        return -1;
-      }
-      // a must be equal to b
-      return 0;
-    });
-		return productos3;
-	},
-});
-/*Template.productos.helpers({
-  myHtml: function() {
-    var productos3 = Productos.find({}).fetch();
-    console.log("productos",productos3);
-    productos3.sort(function(a, b) { //funcion que ordena los datos por apellido
-      if (a.name > b.name) {
-        return 1;
-      }
-      if (a.name < b.name) {
-        return -1;
-      }
-      // a must be equal to b
-      return 0;
-    });
-    var html="<table><thead><tr><th>Objeto</th><th>Detalle</th><th>Cantidad</th></tr></thead><tbody>";
-    productos3.forEach(function(prod) {
-      console.log(prod.name);
-      html+="<tr><td><input id='"+prod._id+"'type='text'name='nombre'value='"+prod.name+"'>"+"</td><td>"+prod.detalle+"</td><td>";
-      html+="<button id='1'>+</button><button id='2'>-</button><button id='"+prod._id+"' class='button'>Modificar</button>";
-      html+="<p>"+prod.cantidad+"</p></td><td>{{>producto_links}}</td></tr>";
-    })
-    html+="</tbody></table>";
-    return html;
-  }
-});*/
+	formCollection() {
+		return Productos;
+	}})
+
 Template.productos.events({
 	'click .remove': function(event, template){
 		//console.log(this._id); //con esto muestro el id por consola que voy a eliminar

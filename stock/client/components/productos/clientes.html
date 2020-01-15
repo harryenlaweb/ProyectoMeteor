@@ -2,19 +2,23 @@
 
 	 {{> EasySearch.Input index=clientes atributes=searchAttributes}}
 
-		<table>
+    <table>
       <thead>
 
          <tr>
-				    <th>  Objeto   </th>
-				   <th> Detalle </th>
-				    <th> Cantidad </th>
-			   </tr>
+            <th>  Objeto   </th>
+           <th> Detalle </th>
+            <th> Cantidad </th>
+         </tr>
 
       </thead>
-	         <tbody>
-			       {{#EasySearch.Each index=clientes}}
-          
+           <tbody>
+             {{#EasySearch.Each index=clientes}}
+          <tr>
+
+          <td> {{name}}  </td>
+          <td> {{DNI}}  </td>
+        </tr>
 
              {{/EasySearch.Each}}
 

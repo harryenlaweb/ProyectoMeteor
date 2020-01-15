@@ -48,7 +48,7 @@ Router.route('/clientes',{
 	name: 'clientes',
 	data: {
 		clientes(){
-			return Clientes();
+			return ClientesIndex;
 		}
 	}
 })
@@ -56,6 +56,7 @@ Router.route('/clientes',{
 Router.route('/producto_form', {
 	name: 'producto_form'
 })
+
 
 Router.route('/producto/:_id', function(){
 	let producto = Productos.findOne({_id: this.params._id});
