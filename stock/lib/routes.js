@@ -22,8 +22,9 @@ Router.configure({
 	layoutTemplate: 'baseLayout',
 	waitOn:function() { 
 		return [
-			function() {return Meteor.subscribe('productos');},
 			function() {return Meteor.subscribe('clientes');},
+			function() {return Meteor.subscribe('productos');},
+			
 		]
 		  
 	}	
@@ -49,6 +50,17 @@ Router.route('/clientes',{
 	data: {
 		clientes(){
 			return ClientesIndex;
+
+		}
+	}
+})
+
+Router.route('/ventas',{
+	name: 'ventas',
+	data: {
+		clientes(){
+			return ClientesIndex;
+			
 		}
 	}
 })
@@ -74,9 +86,12 @@ Router.route('/producto/:_id', function(){
 	name: 'producto_detail'
 })
 
-Router.route('Ventas', {
-	name: 'Ventas'
+Router.route('pedidos', {
+	name: 'pedidos'
 })
+
+
+
 
 
 

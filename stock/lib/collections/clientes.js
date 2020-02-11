@@ -13,7 +13,7 @@ export const Clientes = new Mongo.Collection('clientes');
 
 export const ClientesIndex = new EasySearch.Index({
 	collection: Clientes,
-	fields: ['name', 'summary'],
+	fields: ['name'],
 	engine: new EasySearch.Minimongo(),
 	defaultSearchOptions: {limit: 10}
 })
