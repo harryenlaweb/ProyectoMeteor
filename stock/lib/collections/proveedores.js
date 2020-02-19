@@ -5,25 +5,23 @@ import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 import { EasySearch } from 'meteor/easy:search';
 
-
 // Required AutoForm setup
 SimpleSchema.extendOptions(['autoform']);
 
-export const Productos = new Mongo.Collection('productos');
+export const Proveedores = new Mongo.Collection('proveedores');
 
 
-export const ProductosIndex = new EasySearch.Index({
-	collection: Productos,
-	fields: ['name', 'summary'],
+export const ProveedoresIndex = new EasySearch.Index({
+	collection: Proveedores,
+	fields: ['name'],
 	engine: new EasySearch.Minimongo(),
 	defaultSearchOptions: {limit: 10}
 })
 
-
-Productos.attachSchema(new SimpleSchema({
+Proveedores.attachSchema(new SimpleSchema({
 	name: {
 		type: String,
-		label: 'Nombre del producto',
+		label: 'Nombre del proveedor',
 		max: 200
 	},
 	owner:{
@@ -45,9 +43,9 @@ Productos.attachSchema(new SimpleSchema({
 			type: "hidden"
 		}
 	},
-	detalle:{ 
+	telefono:{ 
 		type: String, 
-		label: 'Detalle del Producto', 
+		label: 'telefono', 
 		optional: true, 
 		max: 2000,
 		autoform:{ 					//EL AUTOFORM SE DEFINE DIFERENTE AL VIDEO
@@ -57,11 +55,6 @@ Productos.attachSchema(new SimpleSchema({
 			class: "textarea"
 		}
 	}﻿,
-	proveedor: {
-		type: Array,
-		label: 'Proveedor',
-		max: 200,
-			},
 	
 	cantidad: {        
     type: Number,		//EL ARRAY TAMBIEN SE DEFINE DIFERENTE AL VIDEO
@@ -69,7 +62,7 @@ Productos.attachSchema(new SimpleSchema({
   	},
 }));
 
-Productos.allow({
+Proveedores.allow({
 	insert: function(userId, doc){
 		return doc.owner === userId;
 	},
@@ -77,24 +70,3 @@ Productos.allow({
 		return doc.owner === userId;
 	}
 })
-
-Meteor.methods({
-	'productos.remove'(productoId){
-		check(productoId, String);
-		Productos.remove(productoId);
-	}
-})
-Meteor.methods({
-  'productos.update'( ProductoId) {
-  	check(productoId, String);
-		
-   
-
-   
-
-    Productos.update(ProductoId, {
-      $set: { cantidad:17 }
-    });
-  }
-});
-   

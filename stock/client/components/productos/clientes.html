@@ -1,39 +1,23 @@
 <template name="clientes">
 
-	 {{> EasySearch.Input index=clientes atributes=searchAttributes}}
+<div>
+<label for="cliente">Nombre o DNI del Cliente:</label>
+<input class="form-control typeahead" id="cliente" type="text"
+placeholder="DNI del cliente"
+autocomplete="off"
+spellcheck="off"
+data-source="cliente"
+/>
+</div>
+<div>
+  <label for="producto">Productos:</label>
+  <input class="form-control typeahead" id="producto" type="text"
+  placeholder="Producto"
+  autocomplete="off"
+  spellcheck="off"
+  data-source="producto"
+  />
+</div>
 
-    <table>
-      <thead>
-
-         <tr>
-            <th>  Nombre   </th>
-           <th> DNI </th>
-            <th> Cantidad </th>
-         </tr>
-
-      </thead>
-           <tbody>
-             {{#EasySearch.Each index=clientes}}
-          <tr>
-
-          <td> {{name}}  </td>
-          <td> {{DNI}}  </td>
-        </tr>
-
-             {{/EasySearch.Each}}
-
-             </tbody>
-
-      </table>
-
-      {{#EasySearch.IfNoResults index=clientes}}
-        <p> No hay ningun producto ...</p>
-      {{/EasySearch.IfNoResults}}
-
-      {{#EasySearch.IfSearching index=clientes}}
-        <p>Buscando ...</p>
-      {{/EasySearch.IfSearching}}
-    
-      {{>EasySearch.Pagination index=clientes}}
 
 </template>
